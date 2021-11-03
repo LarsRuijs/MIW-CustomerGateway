@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option csharp_namespace = "MIW_CustomerGateway.Grpc";
+
+service OrderService {
+  rpc CreateOrder (CreateOrderRequest) returns (OrderResponse);
+}
+
+message CreateOrderRequest {
+  OrderCustomer customer = 1;
+  repeated OrderProduct products = 2;
+}
+
+message OrderResponse {
+  int64 id = 1;
+  OrderCustomer customer = 2;
+  repeated OrderProduct products = 3;
+}
+
+message OrderCustomer {
+  int64 id = 1;
+  int64 credentialsId = 2;
+  string givenName = 3;
+  string familyName = 4;
+  int64 dateOfBirth = 5;
+  string PostalCode = 6;
+  string HouseNumber = 7;
+}
+
+message OrderProduct {
+  int64 id = 1;
+  string name = 2;
+  string company = 3;
+  int32 price = 4;
+  int32 discount = 5;
+  string imgLink = 6;
+}

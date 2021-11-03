@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>MIW_CustomerGateway.Grpc</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Google.Protobuf" Version="3.19.1" />
+      <PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
+      <PackageReference Include="Grpc.Tools" Version="2.41.1">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0-rc.2.21480.5" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0-rc.2.21480.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="Protos\CustomerService.proto" GrpcServices="Client" />
+        <Protobuf Include="Protos\OrderService.proto" GrpcServices="Client" />
+        <Protobuf Include="Protos\ProductService.proto" GrpcServices="Client" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+            <HintPath>..\..\..\..\..\..\..\..\..\..\..\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\5.0.0\ref\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>

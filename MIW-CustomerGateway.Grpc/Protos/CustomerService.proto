@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "MIW_CustomerGateway.Grpc";
+
+service CustomerService {
+  rpc CreateCustomer (CreateCustomerRequest) returns (CustomerResponse);
+}
+
+message CreateCustomerRequest {
+  int64 credentialsId = 1;
+  string givenName = 2;
+  string familyName = 3;
+  int64 dateOfBirth = 4;
+  string postalCode = 5;
+  string houseNumber = 6;
+}
+
+message CustomerResponse {
+  int64 id = 1;
+  int64 credentialsId = 2;
+  string givenName = 3;
+  string familyName = 4;
+  int64 dateOfBirth = 5;
+  string postalCode = 6;
+  string houseNumber = 7;
+}
