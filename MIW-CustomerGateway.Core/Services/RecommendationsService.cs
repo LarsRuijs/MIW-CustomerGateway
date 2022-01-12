@@ -16,14 +16,14 @@ namespace MIW_CustomerGateway.Core.Services
             _recommendationsAgent = recommendationsAgent;
         }
         
-        public async Task<List<Product>> GetRecommendations(List<long> productIds)
+        public async Task<List<Recommendation>> GetRecommendations(List<long> productIds)
         {
-            List<Product> recommendations = new List<Product>();
+            List<Recommendation> recommendations = new List<Recommendation>();
             foreach (var productResponse in await _recommendationsAgent
                 .GetRecommendations(RecommendationsMapper
                     .ProductIdsToGetRecommendationsRequest(productIds)))
             {
-                recommendations.Add(RecommendationsMapper.ProductMessageToProduct(productResponse));
+                recommendations.Add(RecommendationsMapper.RecommendationMessageToRecommendation(productResponse));
             }
 
             return recommendations;

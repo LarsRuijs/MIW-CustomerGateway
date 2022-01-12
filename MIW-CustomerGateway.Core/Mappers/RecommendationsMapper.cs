@@ -29,6 +29,15 @@ namespace MIW_CustomerGateway.Core.Mappers
             };
         }
 
+        public static Recommendation RecommendationMessageToRecommendation(RecommendationMessage recommendationMessage)
+        {
+            return new()
+            {
+                Product = ProductMessageToProduct(recommendationMessage.Product),
+                Priority = recommendationMessage.Priority
+            };
+        }
+
         private static RecommendationsProductMessage ProductToProductMessage(Product product)
         {
             return new()

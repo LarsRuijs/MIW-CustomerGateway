@@ -29,14 +29,14 @@ namespace MIW_CustomerGateway.Api.Controllers
         [HttpGet]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces(MediaTypeNames.Application.Json)]
-        [ProducesResponseType(typeof(ProductDto[]), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Recommendation), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status501NotImplemented)]
         public async Task<IActionResult> GetRecommendations([FromQuery] long[] productIds)
         {
             try
             {
-                List<Product> recommendations = await _recommendationsService
+                List<Recommendation> recommendations = await _recommendationsService
                     .GetRecommendations(productIds.ToList());
                 return Ok(recommendations);
             }

@@ -19,7 +19,7 @@ namespace MIW_CustomerGateway.Grpc.Agents
             _logger = logger;
         }
         
-        public async Task<List<RecommendationsProductMessage>> GetRecommendations(GetRecommendationsRequest request)
+        public async Task<List<RecommendationMessage>> GetRecommendations(GetRecommendationsRequest request)
         {
             using GrpcChannel channel = GrpcChannel.ForAddress(_address);
             var client = new RecommendationsService.RecommendationsServiceClient(channel);
@@ -28,12 +28,12 @@ namespace MIW_CustomerGateway.Grpc.Agents
             
             
 
-            List<RecommendationsProductMessage> productResponses = new List<RecommendationsProductMessage>();
+            List<RecommendationMessage> recommendationResponse = new List<RecommendationMessage>();
             await foreach (var response in responses.ResponseStream.ReadAllAsync())
             {
-                productResponses.Add(response);
+                recommendationResponse.Add(response);
             }
-            return productResponses;
+            return recommendationResponse;
         }
 
         public async Task<List<RecommendationsProductMessage>> GetRecommendationsByBasketId(BasketIdMessage request)

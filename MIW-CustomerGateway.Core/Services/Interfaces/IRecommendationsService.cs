@@ -6,7 +6,7 @@ namespace MIW_CustomerGateway.Core.Services.Interfaces
 {
     public interface IRecommendationsService
     {
-        Task<List<Product>> GetRecommendations(List<long> productIds);
+        Task<List<Recommendation>> GetRecommendations(List<long> productIds);
         
         Task<List<Product>> GetRecommendationsByBasketId(long basketId);
     }
