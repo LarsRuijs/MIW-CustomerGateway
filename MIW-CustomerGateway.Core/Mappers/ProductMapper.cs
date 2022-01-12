@@ -6,7 +6,7 @@ namespace MIW_CustomerGateway.Core.Mappers
 {
     public class ProductMapper
     {
-        public static Product ProductResponseToProduct(ProductResponse productResponse)
+        public static Product ProductResponseToProduct(ProductMessage productResponse)
         {
             return new()
             {

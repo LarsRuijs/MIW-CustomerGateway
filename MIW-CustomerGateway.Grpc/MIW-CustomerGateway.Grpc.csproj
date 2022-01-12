@@ -21,6 +21,7 @@
         <Protobuf Include="Protos\OrderService.proto" GrpcServices="Client" />
         <Protobuf Include="Protos\ProductService.proto" GrpcServices="Client" />
         <Protobuf Include="Protos\AuthService.proto" GrpcServices="Client" />
+        <Protobuf Include="Protos\RecommendationsService.proto" GrpcServices="Client" />
     </ItemGroup>
 
     <ItemGroup>

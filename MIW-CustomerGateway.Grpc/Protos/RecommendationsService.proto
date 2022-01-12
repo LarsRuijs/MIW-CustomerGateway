@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "MIW_CustomerGateway.Grpc";
+
+service RecommendationsService {
+  rpc GetRecommendations (GetRecommendationsRequest) returns (stream RecommendationsProductMessage);
+  rpc GetRecommendationsByBasketId (BasketIdMessage) returns (stream RecommendationsProductMessage);
+}
+
+
+message GetRecommendationsRequest {
+  repeated int64 productIds = 1;
+}
+
+message RecommendationsProducts {
+  repeated RecommendationsProductMessage products = 1;
+}
+
+message BasketIdMessage {
+  int64 basketId = 1;
+}
+
+message RecommendationsProductMessage {
+  int64 id = 1;
+  string name = 2;
+  string company = 3;
+  int32 price = 4;
+  int32 discount = 5;
+  string imgLink = 6;
+}

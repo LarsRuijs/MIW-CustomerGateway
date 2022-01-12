@@ -41,7 +41,7 @@ namespace MIW_CustomerGateway.Api.Controllers
             
             try
             {
-                return Ok(_authService.Login(
+                return Ok(await _authService.Login(
                     AuthMapper.CredentialsDtoToCredentials(credentialsDto)));
             }
             catch (Exception e)
@@ -70,7 +70,7 @@ namespace MIW_CustomerGateway.Api.Controllers
             
             try
             {
-                return Ok(_authService.Register(
+                return Ok(await _authService.Register(
                     AuthMapper.RegisterCredentialsDtoToCredentials(registerCredentialsDto)));
             }
             catch (Exception e)

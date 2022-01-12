@@ -29,11 +29,15 @@ namespace MIW_CustomerGateway.Api
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IOrderService, OrderService>();
-            
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IRecommendationsService, RecommendationsService>();
+
             //Agents
             services.AddTransient<IProductAgent, ProductAgent>();
             services.AddTransient<ICustomerAgent, CustomerAgent>();
             services.AddTransient<IOrderAgent, OrderAgent>();
+            services.AddTransient<IAuthAgent, AuthAgent>();
+            services.AddTransient<IRecommendationsAgent, RecommendationsAgent>();
 
             services.AddControllers();
 
@@ -47,7 +51,8 @@ namespace MIW_CustomerGateway.Api
                             .AllowAnyHeader()
                             .WithOrigins(
                                 //Update to valid origins
-                                "https://kantilever.store");
+                                "https://kantilever.store",
+                                "http://localhost:4200");
                     });
             });
             

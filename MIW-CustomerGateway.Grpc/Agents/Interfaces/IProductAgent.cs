@@ -5,8 +5,8 @@ namespace MIW_CustomerGateway.Grpc.Agents.Interfaces
 {
     public interface IProductAgent
     {
-        Task<ProductResponse> Create(CreateProductRequest request);
-        Task<List<ProductResponse>> GetAll(GetAllProductsRequest request);
-        Task<ProductResponse> GetSingle(GetSingleProductRequest request);
+        Task<ProductMessage> Create(CreateProductRequest request);
+        Task<List<ProductMessage>> GetAll(GetAllProductsRequest request);
+        Task<ProductMessage> GetSingle(GetSingleProductRequest request);
     }
 }

@@ -4,18 +4,16 @@ using Microsoft.Extensions.Logging;
 using MIW_CustomerGateway.Core.Mappers;
 using MIW_CustomerGateway.Core.Models;
 using MIW_CustomerGateway.Core.Services.Interfaces;
-using MIW_CustomerGateway.Grpc.Agents;
+using MIW_CustomerGateway.Grpc.Agents.Interfaces;
 
 namespace MIW_CustomerGateway.Core.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly Logger<AuthService> _logger;
-        private readonly AuthAgent _authAgent;
+        private readonly IAuthAgent _authAgent;
 
-        public AuthService(Logger<AuthService> logger, AuthAgent authAgent)
+        public AuthService(IAuthAgent authAgent)
         {
-            _logger = logger;
             _authAgent = authAgent;
         }
 

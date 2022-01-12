@@ -21,7 +21,7 @@ namespace MIW_CustomerGateway.Grpc.Agents
             _logger = logger;
         }
 
-        public async Task<ProductResponse> Create(CreateProductRequest request)
+        public async Task<ProductMessage> Create(CreateProductRequest request)
         {
             using GrpcChannel channel = GrpcChannel.ForAddress(_address);
             var client = new ProductService.ProductServiceClient(channel);
@@ -30,23 +30,22 @@ namespace MIW_CustomerGateway.Grpc.Agents
 
         }
 
-        public async Task<List<ProductResponse>> GetAll(GetAllProductsRequest request)
+        public async Task<List<ProductMessage>> GetAll(GetAllProductsRequest request)
         {
             using GrpcChannel channel = GrpcChannel.ForAddress(_address);
             var client = new ProductService.ProductServiceClient(channel);
             _logger.LogInformation($"Get All Products Request sent to {_address}");
             var responses = client.GetAllProducts(request);
 
-            List<ProductResponse> productResponses = new List<ProductResponse>();
+            List<ProductMessage> productResponses = new List<ProductMessage>();
             await foreach (var response in responses.ResponseStream.ReadAllAsync())
             {
                 productResponses.Add(response);
             }
             return productResponses;
-
         }
 
-        public async Task<ProductResponse> GetSingle(GetSingleProductRequest request)
+        public async Task<ProductMessage> GetSingle(GetSingleProductRequest request)
         {
             using GrpcChannel channel = GrpcChannel.ForAddress(_address);
             _logger.LogInformation($"Get Single Product Request sent to {_address}");
