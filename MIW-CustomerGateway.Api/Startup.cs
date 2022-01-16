@@ -49,10 +49,8 @@ namespace MIW_CustomerGateway.Api
                         builder
                             .AllowCredentials()
                             .AllowAnyHeader()
-                            .WithOrigins(
-                                //Update to valid origins
-                                "https://kantilever.store",
-                                "http://localhost:4200");
+                            .SetIsOriginAllowed(origin => true) // allow any origin
+                            .AllowCredentials(); // allow credentials
                     });
             });
             
